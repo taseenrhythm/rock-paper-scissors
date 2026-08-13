@@ -1,6 +1,7 @@
 import java.util.Random;
 
 public class Design {
+    
     public String easyLevel(String value){
         if(value.equals("rock") ){
            return "scissors";
