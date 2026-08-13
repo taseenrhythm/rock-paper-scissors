@@ -1,59 +1,69 @@
 import java.util.Random;
 
 public class Design {
-    public void easyLevel(String value){
-        if(value.equalsIgnoreCase("Stone") ){
-            System.out.println("Computer: Scissors\n Congratulations! You are the Best!");
+    public String easyLevel(String value){
+        if(value.equals("rock") ){
+           return "scissors";
         }
 
-        else if(value.equalsIgnoreCase("Scissors") ){
-            System.out.println("Computer: Stone\nCongratulations! You are the Best!");
+        else if(value.equals("scissors") ){
+            return "paper";
         }
 
-       else if(value.equalsIgnoreCase("Paper") ){
-            System.out.println("Computer: Stone\nCongratulations! You are the Best!");
+       else if(value.equals("paper") ){
+            return "rock";
         }
         else{
-            System.out.println("Invalid Input. "+"\nTry again!");
+            return "Invalid Input. Try again!";
         }
     }
 
-     public void mediumLevel(String value){
-        String[] collection = {"Rock","Scissors","Paper"};
-        Random r = new Random();
-        int index = r.nextInt(3);
-        String computerValue = collection[index];
+     public String mediumLevel(String value){
 
-        if(computerValue.equalsIgnoreCase(value) ){
+        String[] collection = {"rock","scissors","paper"};
+        for(String item : collection){
+            if(value.equals(item)){
+                Random r = new Random();
+                int index = r.nextInt(3);
+                String computer = collection[index];
+                return computer;
+            }
+        }
+        return "Invalid Input. Try again!";
+
+
+    }
+
+    public String impossibleLevel(String value){
+        if(value.equals("rock") ){
+           return "paper";
+        }
+
+        else if(value.equals("scissors") ){
+            return"rock";
+        }
+
+        else if(value.equals("paper") ){
+          return "scissors";
+        }
+        else{
+         return "Invalid Input. Try again!";
+        }
+    }
+
+    public void result(String computerValue, String shoot){
+        if(computerValue.equals(shoot) ){
             System.out.println("Computer: "+computerValue+"\nNice Try! Better luck next time!");
         }
-        else if ((computerValue.equalsIgnoreCase("Scissors") && value.equalsIgnoreCase("Stone") ) ||
-                     (computerValue.equalsIgnoreCase("Paper") && value.equalsIgnoreCase("Scissors") ) ||
-                (computerValue.equalsIgnoreCase("Stone") && value.equalsIgnoreCase("Paper") )){
-            System.out.println("Computer:"+computerValue +"\nCongratulations! You are the Best!");
+        else if ((computerValue.equals("scissors") && shoot.equals("rock") ) ||
+                (computerValue.equals("paper") && shoot.equals("scissors") ) ||
+                (computerValue.equals("rock") && shoot.equals("paper") )){
+            System.out.println("Computer: "+computerValue +"\nCongratulations! You are the Best!");
         }
         else{
             System.out.println("Computer: "+computerValue+"\nAlas! You Loss!");
         }
 
-    }
-
-    public void impossibleLevel(String value){
-        if(value.equalsIgnoreCase("Stone") ){
-            System.out.println("Computer: Paper\nAlas! You Loss!");
-        }
-
-        else if(value.equalsIgnoreCase("Scissors") ){
-            System.out.println("Computer: Stone\nAlas! You Loss!");
-        }
-
-        else if(value.equalsIgnoreCase("Paper") ){
-            System.out.println("Computer: Scissors\nAlas! You Loss!");
-        }
-        else{
-            System.out.println("Invalid Input. "+"\nTry again!");
         }
     }
 
-
-}
